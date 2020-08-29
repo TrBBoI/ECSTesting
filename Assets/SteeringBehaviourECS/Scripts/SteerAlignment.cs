@@ -1,8 +1,7 @@
 ﻿using Unity.Entities;
 
 [GenerateAuthoringComponent]
-public struct SteerAlignment : IComponentData, ISteerAction
+public struct SteerAlignment : IComponentData
 {
-    private float weight;
-    public float Weight { get => weight; set => weight = value; }
+    public float weight;
 }

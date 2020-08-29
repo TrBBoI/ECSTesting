@@ -1,9 +1,8 @@
 ﻿using Unity.Entities;
 
 [GenerateAuthoringComponent]
-public struct SteerCohesion : IComponentData, ISteerAction
+public struct SteerCohesion : IComponentData
 {
-    private float weight;
-    public float Weight { get => weight; set => weight = value; }
+    public float weight;
     public float cohesionDistance;
 }

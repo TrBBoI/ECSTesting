@@ -1,9 +1,8 @@
 ﻿using Unity.Entities;
 
 [GenerateAuthoringComponent]
-public struct SteerSeparation : IComponentData, ISteerAction
+public struct SteerSeparation : IComponentData
 {
-    private float weight;
-    public float Weight { get => weight; set => weight = value; }
+    public float weight;
     public float seperationDistance;
 }
