@@ -33,6 +33,11 @@ public class BoidManager : MonoBehaviour
 
             float3 velocity = math.mul(q, new float3(0, 0, rand.NextFloat(1f,10f)));
             entityManager.SetComponentData(instance, new SteerVelocity { velocity = velocity, lastVelocity = velocity });
+
+            if (entityManager.HasComponent<SteerWander>(instance))
+            {
+                entityManager.AddComponentData(instance, new SteerWanderEdit() { qrot = quaternion.identity });
+            }
         }
     }
 

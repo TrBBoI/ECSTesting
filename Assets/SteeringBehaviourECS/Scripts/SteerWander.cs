@@ -6,10 +6,12 @@ using UnityEngine;
 public struct SteerWander : IComponentData
 {
     public float weight;
+    public float turnWeight;
     public float distance;
     public float radius;
+}
 
-    public float3 rot;
-    public int r;
-    public float3 randRot;
+public struct SteerWanderEdit : IComponentData
+{
+    public quaternion qrot;
 }

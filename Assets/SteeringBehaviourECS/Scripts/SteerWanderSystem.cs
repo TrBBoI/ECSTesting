@@ -22,7 +22,8 @@ public class SteerWanderSystem : JobComponentSystem
             (int nativeThreadIndex, 
             int entityInQueryIndex,
             ref SteerVelocity steerVelocity,
-            ref SteerWander steerWander) =>
+            ref SteerWanderEdit steerWanderEdit,
+            in SteerWander steerWander) =>
             {
                 // int idx = nativeThreadIndex;
                 int idx = entityInQueryIndex % randomArray.Length;
@@ -30,18 +31,20 @@ public class SteerWanderSystem : JobComponentSystem
 
                 float3 lookahead = steerWander.distance * math.normalize(steerVelocity.lastVelocity);
 
-                steerWander.r = nativeThreadIndex;
-                steerWander.randRot = rand.NextFloat3Direction();
-                steerWander.rot = math.normalize(math.lerp(steerWander.rot, steerWander.randRot, 0.2f));
-                float3 dir = steerWander.radius * steerWander.rot;
+                quaternion randq = rand.NextQuaternionRotation();
+                steerWanderEdit.qrot = math.slerp(steerWanderEdit.qrot, randq, steerWander.turnWeight);
+                float3 dir = math.mul(steerWanderEdit.qrot, new float3(0, 0, 1));
+
+                steerVelocity.velocity = math.lerp(steerVelocity.velocity, (lookahead + dir), steerWander.weight);
+
                 randomArray[idx] = rand;
 
             }).Schedule(inputDeps);
-                steerVelocity.velocity = math.lerp(steerVelocity.velocity, (lookahead + dir), steerWander.Weight);
 
         // job.Complete();
 
         return job;
+        // throw new System.NotImplementedException();
     }
 }
             }).Schedule(inputDeps);
