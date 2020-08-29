@@ -18,8 +18,8 @@ public class SteerOrientationSystem : JobComponentSystem
             {
                 float3 forward = math.normalizesafe(steerVelocity.velocity, new float3(0, 0, 1));
                 
-                float3 right = math.normalize(math.cross(forward, new float3(0, 1, 0)));
-                float3 up = math.normalize(math.cross(right, forward));
+                //float3 right = math.normalize(math.cross(forward, new float3(0, 1, 0)));
+                //float3 up = math.normalize(math.cross(right, forward));
 
                 // rotation.Value = new quaternion(new float3x3(right, up, forward));
                 // rotation.Value = quaternion.LookRotation(steerVelocity.velocity, up);

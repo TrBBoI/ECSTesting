@@ -11,7 +11,6 @@ class RandomSystem : ComponentSystem
 
     protected override void OnCreate()
     {
-        UnityEngine.Debug.Log("Max Job thread Count: " + JobsUtility.MaxJobThreadCount);
         var randomArray = new Unity.Mathematics.Random[JobsUtility.MaxJobThreadCount];
         var seed = new System.Random(System.DateTime.Now.Millisecond);
 

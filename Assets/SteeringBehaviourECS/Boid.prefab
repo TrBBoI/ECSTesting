@@ -95,16 +95,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 0.1
-  distance: 10
+  turnWeight: 0.1
+  distance: 15
   radius: 5
-  rot:
-    x: 0
-    y: 0
-    z: 0
-  randRot:
-    x: 0
-    y: 0
-    z: 0
 --- !u!33 &1510304650544759947
 MeshFilter:
   m_ObjectHideFlags: 0

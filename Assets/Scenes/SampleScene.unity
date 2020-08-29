@@ -341,7 +341,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boidPrefab: {fileID: 1510304650544759941, guid: eb1d6bc467a4fb746a6b50eda6083f81,
     type: 3}
-  boidSize: 50
+  boidSize: 500
+  maxBound: 100
+  minBound: -100
 --- !u!4 &2120865712
 Transform:
   m_ObjectHideFlags: 0
