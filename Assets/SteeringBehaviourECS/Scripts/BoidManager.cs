@@ -11,6 +11,9 @@ public class BoidManager : MonoBehaviour
     public GameObject boidPrefab;
     public int boidSize = 500;
 
+    public float maxBound = 50;
+    public float minBound = -50;
+
     public BlobAssetStore store;
     
     // Start is called before the first frame update
@@ -26,7 +29,7 @@ public class BoidManager : MonoBehaviour
         for (int i = 0; i < boidSize; ++i)
         {
             var instance = entityManager.Instantiate(boid);
-            float3 xyz = rand.NextFloat3(-50f, 50f);
+            float3 xyz = rand.NextFloat3(minBound, maxBound);
             quaternion q = rand.NextQuaternionRotation();
             entityManager.SetComponentData(instance, new Translation { Value = xyz });
             entityManager.SetComponentData(instance, new Rotation { Value = q });
