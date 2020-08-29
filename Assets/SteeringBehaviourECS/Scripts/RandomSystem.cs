@@ -1,4 +1,5 @@
-﻿using Unity.Collections;
+﻿using System.Diagnostics;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs.LowLevel.Unsafe;
 using Unity.Mathematics;
@@ -10,8 +11,9 @@ class RandomSystem : ComponentSystem
 
     protected override void OnCreate()
     {
+        UnityEngine.Debug.Log("Max Job thread Count: " + JobsUtility.MaxJobThreadCount);
         var randomArray = new Unity.Mathematics.Random[JobsUtility.MaxJobThreadCount];
-        var seed = new System.Random();
+        var seed = new System.Random(System.DateTime.Now.Millisecond);
 
         for (int i = 0; i < JobsUtility.MaxJobThreadCount; ++i)
             randomArray[i] = new Unity.Mathematics.Random((uint)seed.Next());
